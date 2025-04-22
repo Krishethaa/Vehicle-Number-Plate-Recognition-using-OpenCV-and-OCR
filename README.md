@@ -1,61 +1,28 @@
-## Vehicle Number Plate Recognition using CV2
+# 🚗 Vehicle Number Plate Recognition using OpenCV and OCR (Computer Vision)
 
-This Python script demonstrates an Automatic Number Plate Recognition (ANPR) system using OpenCV and Tesseract OCR. It detects and extracts the number plate from an input image and recognizes the characters on the plate.
+This project demonstrates an automated system for **vehicle number plate recognition** using **OpenCV** for image processing and **Tesseract OCR** for text extraction. The system detects the number plate from vehicle images, extracts the number, and stores it along with the timestamp into a **CSV file**.
 
-### Dependencies:
+---
 
-- **OpenCV**: A popular computer vision library used for image processing tasks such as reading, resizing, filtering, edge detection, contour detection, and drawing.
-- **NumPy**: A fundamental package for scientific computing with Python, used here for array manipulation.
-- **imutils**: A package providing convenience functions to make basic image processing functions such as resizing, rotating, and displaying images easier with OpenCV.
-- **pytesseract**: A Python wrapper for Google's Tesseract-OCR Engine. It allows for easy integration of OCR capabilities into Python applications.
-- **Pandas**: A powerful data manipulation and analysis library. Here it's used to store the recognized text and current timestamp into a CSV file.
+## 🧠 Project Overview
 
-### Functionality:
+The core functionality of this project is to automatically process an image of a vehicle, detect the number plate, and read the registration number using Optical Character Recognition (OCR). The steps followed by the system are:
 
-1. **Read Image**: The script reads the input image 'car_2.jpg' using OpenCV.
+1. **Pre-processing**: Resize and convert the image to grayscale to enhance processing.
+2. **Edge Detection**: Use **Canny Edge Detection** to detect significant edges in the image.
+3. **Contour Detection**: Find contours in the image, focusing on those that match the shape of a number plate (rectangular).
+4. **OCR (Optical Character Recognition)**: Extract the text from the detected number plate using **Tesseract OCR**.
+5. **Data Saving**: Save the recognized number plate along with the timestamp to a **CSV file**.
 
-2. **Preprocessing**:
-   - Resize the image to a width of 500 pixels.
-   - Convert the image to grayscale.
-   - Apply bilateral filtering to reduce noise while preserving edges.
-   - Detect edges using Canny edge detection.
+---
+DEMO:
 
-3. **Contour Detection**:
-   - Find contours in the edged image.
-   - Sort contours by area in descending order and select the largest 30 contours.
-   - Loop through each contour and approximate the shape to a polygon with four vertices, presumably representing the number plate.
 
-4. **Number Plate Extraction**:
-   - Create a mask to extract the region of interest (number plate) from the image.
-   - Apply the mask to the original image.
 
-5. **Text Recognition**:
-   - Configure Tesseract OCR.
-   - Run OCR on the extracted number plate region to recognize the text.
+## 🚀 How to Use the Project
 
-6. **Data Storage**:
-   - Store the recognized text along with the current timestamp in a Pandas DataFrame.
+### 1. **Install Dependencies**
 
-7. **Output**:
-   - Display the final image with the extracted number plate region.
-   - Print the recognized text.
-   - Save the DataFrame to a CSV file named 'data.csv'.
-
-### How to Use:
-
-1. Make sure you have Python installed on your system along with the necessary libraries: OpenCV, NumPy, imutils, pytesseract, and Pandas.
-2. Clone the repository or download the script 'code_M1.py'.
-3. Place an image named 'car_2.jpg' (or others) in the same directory as the script.
-4. Run the script using `python code_M1.py`.
-5. The recognized number plate text will be printed in the console, and the extracted number plate region will be displayed.
-
-### Note:
-
-- Ensure that Tesseract OCR is properly installed on your system and its executable is in the PATH.
-- Adjust the parameters and configurations as needed for different input images and desired performance.
-
-### Code Reference Notice:
-
-- The code provided in this repository was referenced from [Vehicle-Number-Plate-Reading](https://github.com/vjgpt/Vehicle-Number-Plate-Reading) and was thoroughly understood before being rewritten.
-- While the core functionality remains the same, modifications have been made for clarity.
-- All credit for the original implementation goes to the author(s) of the referenced repository.
+Before running the script, ensure you have the necessary Python libraries installed. You can install them via `pip`:
+```bash
+pip install opencv-python pytesseract imutils pandas
