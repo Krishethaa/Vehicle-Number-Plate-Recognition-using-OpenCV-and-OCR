@@ -15,9 +15,6 @@ The core functionality of this project is to automatically process an image of a
 5. **Data Saving**: Save the recognized number plate along with the timestamp to a **CSV file**.
 
 ---
-DEMO:
-
-
 
 ## 🚀 How to Use the Project
 
